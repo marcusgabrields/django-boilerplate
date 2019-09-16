@@ -11,4 +11,6 @@ A simple boilerplate to quickstart a new Django Project
 - run `poetry check` for check for any error.
 - run `poetry show --tree` to see the dependencies.
 - run `poetry install` to install dependencies.
+- run `poetry run python manage.py makemigrations` to make migrations of users
+- run `poetry run python manage.py migrate` to apply the migrations
 - run `poetry run python manage.py runserver` to start the server.
