@@ -4,8 +4,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from .managers import UserManager
 
+from common.models import TimeStampedModel
 
-class User(AbstractBaseUser, PermissionsMixin):
+
+class User(AbstractBaseUser, PermissionsMixin, TimeStampedModel):
     email = models.EmailField(max_length=255, unique=True)
     is_staff = models.BooleanField(
         default=False,

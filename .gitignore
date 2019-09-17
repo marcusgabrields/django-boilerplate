@@ -7,3 +7,6 @@ poetry.lock
 
 # Database
 *.sqlite3
+
+# Editors
+.vscode
