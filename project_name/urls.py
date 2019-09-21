@@ -8,5 +8,9 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
+    # Django Debug Toolbar
     import debug_toolbar
     urlpatterns += [path('__debug__/', include(debug_toolbar.urls))]
+
+    # Django Silk
+    urlpatterns += [path(r'silk/', include('silk.urls', namespace='silk'))]
