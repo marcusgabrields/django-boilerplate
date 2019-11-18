@@ -1,13 +1,14 @@
 [tool.poetry]
-name = "django-boilerplate"
+name = "{{ project_name }}-backend"
 version = "0.1.1"
-description = "A simple boilerplate to quickstart a new Django Project"
-authors = ["Marcus Gabriel <marcusgabriel.ds@gmail.com>"]
+description = "{{ project_name }} backend"
+authors = []
 license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.6"
 django = "^2.2"
+django-webpack-loader = "^0.6.0"
 
 [tool.poetry.dev-dependencies]
 django-debug-toolbar = "^2.0"
