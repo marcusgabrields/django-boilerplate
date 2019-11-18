@@ -1,7 +1,7 @@
 {
-    "name": "projeto_teste",
+    "name": "{{ project_name }}-frontend",
     "version": "1.0.0",
-    "description": "A simple boilerplate to quickstart a new Django Project",
+    "description": "{{ project_name }} frontend",
     "main": "server.js",
     "dependencies": {
       "@babel/cli": "^7.7.0",
