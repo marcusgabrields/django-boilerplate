@@ -1,0 +1,39 @@
+{
+    "name": "projeto_teste",
+    "version": "1.0.0",
+    "description": "A simple boilerplate to quickstart a new Django Project",
+    "main": "server.js",
+    "dependencies": {
+      "@babel/cli": "^7.7.0",
+      "@babel/core": "^7.7.2",
+      "@babel/node": "^7.7.0",
+      "@babel/polyfill": "^7.7.0",
+      "@babel/preset-env": "^7.7.1",
+      "@babel/preset-react": "^7.7.0",
+      "autoprefixer": "^9.7.1",
+      "babel-loader": "^8.0.6",
+      "bootstrap": "^4.3.1",
+      "css-loader": "^3.2.0",
+      "expose-loader": "^0.7.5",
+      "imports-loader": "^0.8.0",
+      "jquery": "^3.4.1",
+      "node-sass": "^4.13.0",
+      "postcss-loader": "^3.0.0",
+      "react": "^16.12.0",
+      "react-dom": "^16.12.0",
+      "react-hot-loader": "^4.12.18",
+      "sass-loader": "^8.0.0",
+      "style-loader": "^1.0.0",
+      "webpack": "^4.41.2",
+      "webpack-bundle-tracker": "^0.4.3",
+      "webpack-dev-server": "^3.9.0",
+      "whatwg-fetch": "^3.0.0"
+    },
+    "devDependencies": {},
+    "scripts": {
+      "start": "babel-node server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+  }
