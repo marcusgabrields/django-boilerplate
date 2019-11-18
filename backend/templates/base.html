@@ -1,0 +1,25 @@
+{% load render_bundle from webpack_loader %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+
+    <title>{% block title %}{% endblock title %}</title>
+
+    <!-- Webpack rendered CSS -->
+    {% render_bundle 'main' 'css' %}
+  </head>
+
+  <body>
+    {% block body %}{% endblock body %}
+
+    <!-- Webpack rendered JS -->
+    {% render_bundle 'main' 'js' 'JQUERY' %}
+    {% render_bundle 'main' 'js' %}
+  </body>
+</html>
