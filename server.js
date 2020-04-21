@@ -1,16 +1,18 @@
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
+
 import config from './webpack.local.config';
 
 new WebpackDevServer(webpack(config), {
-  publicPath: config[1].output.publicPath,
+  publicPath: config.output.publicPath,
+  port: 3000,
   hot: true,
   inline: true,
   historyApiFallback: true,
-  headers: { 'Access-Control-Allow-Origin': '*' }
-}).listen(3000, '0.0.0.0', (err) => {
-  if (err) {
-    console.log(err);
+  headers: { 'Access-Control-Allow-Origin': '*' },
+}).listen(3000, '0.0.0.0', (error) => {
+  if (error) {
+    console.log(error);
   }
 
   console.log('Listening at 0.0.0.0:3000');
