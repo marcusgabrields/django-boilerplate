@@ -35,7 +35,10 @@ To setup the project you need to have Poetry installed.
     - run `npm run prod` if using npm.
     - run `yarn prod` if using Yarn.
 
+at the end access http://127.0.0.1:8000/
+
 ## Next steps
+- Separete backend's settings files (base, prod, local)
 - CI/CD pipelines
 - Deploy in the main services (AWS, Google, Heroku, DigitalOcean)
 - Static check (Linters)
