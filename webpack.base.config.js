@@ -1,77 +1,94 @@
-import path from 'path';
-import BundleTracker from 'webpack-bundle-tracker';
+const webpack = require('webpack');
+const path = require('path');
+const jquery = require.resolve('jquery');
 
-const nodeModulesDir = path.resolve(__dirname, 'node_modules');
-
-module.exports = [
-  {
-    entry: ['./frontend/js/jquery-index.js'],
-    output: {
-      path: path.resolve('./frontend/bundles/'),
-      filename: 'bundle-jquery.js',
-    },
-    module: {
-      rules: [
-        {
-          test: /\.jsx?$/,
-          exclude: [nodeModulesDir],
-          use: {
-            loader: 'babel-loader',
+module.exports = {
+  entry: [
+    // Define in local or prod
+  ],
+  output: {
+    // Define in local or prod
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+          { loader: 'postcss-loader' }
+        ],
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+          {
+            loader: 'postcss-loader',
             options: {
-              presets: ['@babel/preset-env'],
+              sourceMap: true
             },
           },
-        },
-        {
-          test: /jquery\/dist\/jquery\.js$/,
-          loader: 'expose-loader?$',
-        },
-        {
-          test: /jquery\/dist\/jquery\.js$/,
-          loader: 'expose-loader?jQuery',
-        },
-      ],
-    },
-    plugins: [
-      new BundleTracker({
-        filename: './jquery-webpack-stats.json',
-      }),
+          { loader: 'sass-loader' },
+        ],
+      },
+      {
+        test: /\.(svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 100000
+          }
+        }
+      },
+      {
+        test: /\.(jpg|jpeg|png)?$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: 'i-[hash].[ext]',
+          },
+        }
+      },
+      {
+        test: jquery,
+        use: [
+          {
+            loader: 'expose-loader',
+            options: 'jQuery'
+          },
+          {
+            loader: 'expose-loader',
+            options: '$'
+          }
+        ],
+      },
     ],
   },
-  {
-    context: __dirname,
-    entry: [
-      // defined in local or prod
-    ],
-    output: {
-      // defined in local or prod
-    },
-    module: {
-      rules: [
-        {
-          test: /\.css$/,
-          loaders: ['style-loader', 'css-loader', 'postcss-loader'],
-        },
-        {
-          test: /\.scss$/,
-          loaders: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
-        },
-        {
-          test: /\.(svg)(\?v=\d+\.\d+\.\d+)?$/,
-          loader: 'url-loader?limit=100000',
-        },
-        {
-          test: /\.(jpg|png)?$/,
-          loaders: ['file-loader?name=i-[hash].[ext]'],
-        },
-      ],
-    },
-    plugins: [
-      // defined in local or prod
-    ],
-    resolve: {
-      modules: ['node_modules', 'bower_components', path.resolve(__dirname, 'frontend/js/')],
-      extensions: ['.js', '.jsx'],
-    },
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      Tether: 'tether',
+      'window.Tether': 'tether',
+      Popper: ['popper.js', 'default'],
+      Alert: 'exports-loader?Alert!bootstrap/js/dist/alert',
+      Button: 'exports-loader?Button!bootstrap/js/dist/button',
+      Carousel: 'exports-loader?Carousel!bootstrap/js/dist/carousel',
+      Collapse: 'exports-loader?Collapse!bootstrap/js/dist/collapse',
+      Dropdown: 'exports-loader?Dropdown!bootstrap/js/dist/dropdown',
+      Modal: 'exports-loader?Modal!bootstrap/js/dist/modal',
+      Popover: 'exports-loader?Popover!bootstrap/js/dist/popover',
+      Scrollspy: 'exports-loader?Scrollspy!bootstrap/js/dist/scrollspy',
+      Tab: 'exports-loader?Tab!bootstrap/js/dist/tab',
+      Tooltip: 'exports-loader?Tooltip!bootstrap/js/dist/tooltip',
+      Util: 'exports-loader?Util!bootstrap/js/dist/util',
+    }),
+  ],
+  resolve: {
+    modules: ['node_modules', path.resolve(__dirname, 'frontend/js/')],
+    extensions: ['.js', '.jsx'],
   },
-];
+}
